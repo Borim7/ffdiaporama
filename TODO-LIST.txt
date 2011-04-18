@@ -1,0 +1,16 @@
+Buggs :
+    Gros bug dans la génération vidéo concernant les musiques !
+    Les transitions mangent les bandes noires en mode cinema + DVD
+
+A faire :
+    Faire les transitions de musique quand un slide définie une nouvelle playlist
+    Faire les fade out des musiques lors des transitions de musique et des changement de volume
+    Ajouter un skip de frame inutile dans cvideofilewrapper::ReadVideoFrame
+    Finir la boite about
+    Mettre une loupe sur les thumb des objets ayant plusieurs plans !
+    Ajouter la durée des transitions sous le thumb de transition du montage
+    Faire les transitions de fonds (à réfléchir !) +Faire la boite de modif des transitions de fond
+    Faire la boite de modif des soundtrack
+    Faire la fonction d'ajout d'un sous projet
+    Supprimer la dépendance à MPlayer dans la boite vidéo
+    Faire le portage sous Windows
