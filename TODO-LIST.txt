@@ -1,16 +1,19 @@
 Buggs :
-    Gros bug dans la génération vidéo concernant les musiques !
+    Sous Windows, certaines images ne se chargent pas !
     Les transitions mangent les bandes noires en mode cinema + DVD
+    Les textes de background ne subissent pas l'opacité dans les transitions !
+    Les filtres de transformation ne s'enlèvent pas quand on repasse à normal dans la boite vidéo !
 
-A faire :
-    Faire les transitions de musique quand un slide définie une nouvelle playlist
-    Faire les fade out des musiques lors des transitions de musique et des changement de volume
+A faire [urgent] :
+    Continuer le portage Windows
+    Modifier la boite video pour modif du volume des soundtrack
+    Ajouter les filtres de correction dans la boite vidéo
+
+A faire [moins urgent] :
+    Revoir le chargement d'un projet => si fichier non trouvé
+    Faire les fade in/out des musiques lors des changement de volume
     Ajouter un skip de frame inutile dans cvideofilewrapper::ReadVideoFrame
-    Finir la boite about
-    Mettre une loupe sur les thumb des objets ayant plusieurs plans !
-    Ajouter la durée des transitions sous le thumb de transition du montage
     Faire les transitions de fonds (à réfléchir !) +Faire la boite de modif des transitions de fond
-    Faire la boite de modif des soundtrack
     Faire la fonction d'ajout d'un sous projet
-    Supprimer la dépendance à MPlayer dans la boite vidéo
-    Faire le portage sous Windows
+    Revoir cBrushDefinition::GetLibraryBrush pour fonctionner en une version allégée de cDiaporamaShot !
+    Revoir les messages d'erreurs lié à exiv2 dans _ImageFileWrapper
