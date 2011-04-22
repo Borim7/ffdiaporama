@@ -1,40 +1,3 @@
-Qt pour Windows
-	Page de téléchargement : http://qt.nokia.com/downloads
-	Go LGPL
-	Qt SDK for Windows
-	Téléchargé http://get.qt.nokia.com/qtsdk/qt-sdk-win-opensource-2010.05.exe
-	Installer tout !
-
-librairies ffmpeg pour Windows
-	Page de téléchargement : http://hawkeye.arrozcru.org/
-	Prendre la dernière version dans la rubrique 32-bit Builds (Dev)
-		FFmpeg git-c967860 32-bit Dev
-	Décompresser le fichier
-
-
-librairies SDL pour Windows
-	Page de téléchargement : http://www.libsdl.org/download-1.2.php
-	Prendre la dernière version Mingw dans la rubrique "Development Libraries" pour Windows
-		SDL-devel-1.2.14-mingw32.tar.gz (Mingw32)
-	Décompresser le fichier
-
-Modifier le fichier ffDiaporama.pro pour indiquer dans quel répertoire vous avez mis la librairie
-	Dans ce bloc :
-		win32 {
-		    DESTDIR     += ../winbuild/
-		    OBJECTS_DIR += ../winbuild/
-		    MOC_DIR     += ../winbuild/
-		    UI_DIR      += ../winbuild/
-    INCLUDEPATH += . \
-                   C:\Qt\ffmpeg-git-c967860-win32-dev\include \        #------ ffmpeg library path
-                   C:\Qt\SDL-1.2.14\include                            #------ SDL library path
-
-    LIBS        += -L"C:\Qt\ffmpeg-git-c967860-win32-dev\lib" \        #------ ffmpeg library path
-                   -L"C:\Qt\SDL-1.2.14\lib" \                          #------ SDL library path
-                   -lavformat -lavcodec -lavutil -lswscale -lSDL
-
-
-
 Source files organisation
 
     File starting with _ are for basic data manipulation
@@ -77,15 +40,6 @@ Source files organisation
 
     _Diaporama.h/.cpp contains the object hierarchy for diaporama manipulation and reference all basic objects
         Normally, _Diaporama is included in all .h of GUI files
-
-Les paquets suivant doivent être installés pour la compilation sous ubuntu
-    libsdl-image1.2-dev
-    libsdl-mixer1.2-dev
-
-    libavutil-dev
-    libavformat-dev
-    libavcodec-dev
-    libswscale-dev
 
 Pourquoi QT ?
     Le python c'est bien mais ça ne se compile pas.
