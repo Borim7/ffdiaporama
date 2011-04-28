@@ -1,17 +1,59 @@
 Buggs :
+    Le h264 génère 2 fichiers temporaires => les envoyer dans un repertoire user !
+    Le h264 ne trouve pas les fichiers de préset [Windows]
     Les transitions mangent les bandes noires en mode cinema + DVD
-    Les textes de background ne subissent pas l'opacitÃ© dans les transitions !
-    Les filtres de transformation ne s'enlÃ¨vent pas quand on repasse Ã  normal dans la boite vidÃ©o !
+    Les textes de background ne subissent pas l'opacité dans les transitions !
+    Les filtres de transformation ne s'enlèvent pas quand on repasse à normal dans la boite vidéo !
 
 A faire [urgent] :
     Modifier la boite video pour modif du volume des soundtrack
-    Ajouter les filtres de correction dans la boite vidÃ©o
+    Ajouter les filtres de correction dans la boite vidéo
     Faire les fade in/out des musiques lors des changement de volume
     Ajouter un skip de frame inutile dans cvideofilewrapper::ReadVideoFrame
 
 A faire [moins urgent] :
-    Revoir le chargement d'un projet => si fichier non trouvÃ©
-    Faire les transitions de fonds (Ã  rÃ©flÃ©chir !) +Faire la boite de modif des transitions de fond
+    Revoir le chargement d'un projet => si fichier non trouvé
+    Faire les transitions de fonds (à réfléchir !) +Faire la boite de modif des transitions de fond
     Faire la fonction d'ajout d'un sous projet
-    Revoir cBrushDefinition::GetLibraryBrush pour fonctionner en une version allÃ©gÃ©e de cDiaporamaShot !
-    Revoir les messages d'erreurs liÃ© Ã  exiv2 dans _ImageFileWrapper
+    Revoir cBrushDefinition::GetLibraryBrush pour fonctionner en une version allégée de cDiaporamaShot !
+    Revoir les messages d'erreurs lié à exiv2 dans _ImageFileWrapper
+
+
+-------------------------------------------------------------------------------------------
+Changelog depuis la build 20110424
+-------------------------------------------------------------------------------------------
+- Correction d'un bugg lié à la lecture des musiques [Preview+render]
+    Les musiques s'arrete après passage d'une vidéo et ne sont plus jouées que lros des transitions
+
+- Transformation du moteur de génération des videos [render]
+    Les libav sont maintenant utilisées pour la génération d'un fichier son temporaire puis la
+    vidéo est compilée via ffmpeg en extern avec utilisation du fichier son temporaire
+
+- Ajout de format de rendu [render]
+    Ajout des containers Flash (FLV), WebM et MPEG
+    Ajout des codecs FLV, Sorenson H.263, VP8 et Mpeg2video
+
+- Correction des liens WEB cassés dans les menus
+    Suite au passage en PHP des pages du sites WEB, certains liens ne s'ouvrent plus
+
+- Privilégie libfaac à l'encodeur aac interne de ffmpeg [render]
+    Si libfaac est détecté par ffmpeg, il sera utilisé en lieu et place de l'encodeur interne
+    La qualité de l'aac est mauvaise dans les rendues avec la version ffmpeg de Ubuntu/Maverick
+
+- Privilégie libxvid à l'encodeur mpeg4 interne de ffmpeg [render]
+    Si libxvid est détecté par ffmpeg, il sera utilisé en lieu et place de l'encodeur interne
+
+- Correction du bugg de chargement des images de fond dans la librairie [Version Windows]
+    Remet les séparateurs dans le bon sens pour les noms de répertoire
+
+- Correction du bugg d'affichage des répertoires dans system properties (boite A propos de) [Version Windows]
+    Remet les séparateurs dans le bon sens pour les noms de répertoire
+
+- Correction du bugg d'affichage des noms de fichier dans la zone d'informations [Version Windows]
+    Remet les séparateurs dans le bon sens pour les noms de répertoire
+
+- Adaptation des boites de dialog pour Qt 4.7.2 et Windows
+    Windows et Qt 4.7.2 ajoutent des nouvelles options pour certains contrôles comme des shapes supplémentaires,
+    un déplacement du % dans les progress bar etc...
+        A propos de
+        Render
