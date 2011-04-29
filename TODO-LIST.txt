@@ -1,6 +1,4 @@
 Buggs :
-    Le h264 génère 2 fichiers temporaires => les envoyer dans un repertoire user !
-    Le h264 ne trouve pas les fichiers de préset [Windows]
     Les transitions mangent les bandes noires en mode cinema + DVD
     Les textes de background ne subissent pas l'opacité dans les transitions !
     Les filtres de transformation ne s'enlèvent pas quand on repasse à normal dans la boite vidéo !
@@ -17,3 +15,6 @@ A faire [moins urgent] :
     Faire la fonction d'ajout d'un sous projet
     Revoir cBrushDefinition::GetLibraryBrush pour fonctionner en une version allégée de cDiaporamaShot !
     Revoir les messages d'erreurs lié à exiv2 dans _ImageFileWrapper
+
+
+Nokia XpressMusic MP4 640x360 Divx+MP3
