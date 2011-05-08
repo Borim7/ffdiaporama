@@ -11,43 +11,10 @@ A faire [moins urgent] :
     Revoir les messages d'erreurs lié à exiv2 dans _ImageFileWrapper
 
 ------------------------------------
-Changelog depuis la version 20110429
+Changelog depuis la version 20110506
 ------------------------------------
 
-- Correction de bugg
-    => L'image ne respectait pas la géométrie dans l'onglet composition de la boite image [Interface]
-    => Les textes de background ne subissaient pas l'opacité dans les transitions !
-    => Correction de plusieurs fuites mémoire dans la boite image [Interface]
-    => Correction d'une fuite mémoire dans la preview [Render]
-    => Les réductions de volume sonore était désynchronisée [Preview+Render]
-    => Correction des 4 CustomCombo pour lesquels la sélection sur la meme ligne ne générait pas de rafraichissement
-        Le filtre de transformation ne s'enlèvait pas quand on repasse à normal dans la boite vidéo !)
-    => Correction d'une erreur de calcul dans le dessin des fonds de bloc avec des brosses basées sur des images
-        Le remplissage des formes n'était pas toujours complèt
+- Correction d'un bugg induit par la précédente fusion des onglets image correction et recadrage dans les boites de modif
+    => l'image affichée dans la boite n'est pas la bonne !
 
-- Fusion des onglets plan et correction d'image [Interface]
-    => Simplification de l'interface
-    => La correction d'image devient disponible pour les videos
-
-- Ajout du nom de fichier et de la durée des slides dans l'affichage des thumbnails [Interface]
-
-- Ajout d'une combo dans la boite vidéo - Onglet edition - pour régler le volume du son des vidéos
-
-- Implementation de la fonction d'ajout d'un sous projet
-
-- Transformation de l'option "Image de la librairie" des selections de brosse [Arriere-plan + brosse des blocs de composition]
-    => Les images de la librairie apparraissent désormais sous forme de combobox et non plus de table
-    => Simplification de l'interface
-
-- Transformation du fonctionnement de la librairie pour les images d'arrière plan :
-    => Un fichier de licence n'est plus obligatoire pour chaque image
-    => Les images peuvent maintenant etre aussi des png (en plus des jpg)
-
-- Modification du fonctionnement de la custom combobox pour les couleurs :
-    => Maintenant si on click sur la couleur custom, la boite couleur est affichée
-    => Suppression des boutons d'appel de la boite couleur dans les onglets de composition et de fond d'écran
-
-- Modification des formes triangulaires (elles deviennent des polygones réguliers)
-
-- Modification des bordures des blocs (ajout d'une bordure intérieur)
-    => Le travail est encore en cours ...
+- Remplacement de la fonte Ubuntu par sans-serif dans toutes les boites de dialogue
