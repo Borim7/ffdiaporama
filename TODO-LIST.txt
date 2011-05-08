@@ -18,3 +18,5 @@ Changelog depuis la version 20110506
     => l'image affichée dans la boite n'est pas la bonne !
 
 - Remplacement de la fonte Ubuntu par sans-serif dans toutes les boites de dialogue
+
+- Ajout de directives de compilation pour portabilité vers FEDORA
