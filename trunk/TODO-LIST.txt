@@ -10,13 +10,14 @@ A faire [moins urgent] :
     Faire les transitions de fonds (à réfléchir !) +Faire la boite de modif des transitions de fond
     Revoir les messages d'erreurs lié à exiv2 dans _ImageFileWrapper
 
+
 ------------------------------------
-Changelog depuis la version 20110506
+Changelog depuis la version 20110509
 ------------------------------------
+- Corrige un bug sur la fermeture de SDL qui n'était pas toujours effectuée
+- Corrige un bug sur le calcul de la taille des bordures extérieurs des formes
 
-- Correction d'un bugg induit par la précédente fusion des onglets image correction et recadrage dans les boites de modif
-    => l'image affichée dans la boite n'est pas la bonne !
-
-- Remplacement de la fonte Ubuntu par sans-serif dans toutes les boites de dialogue
-
-- Ajout de directives de compilation pour portabilité vers FEDORA
+- Suppresion des bordures intérieurs des formes : Pour le moment ça pose trop de problèmes !
+- Ajout des rotations de formes (sur les 3 axes)
+- La transparence devient global à la forme (texte+fond) et s'applique maintenant meme s'il n'y a que du texte (à finir !)
+- Activation des options d'anti-aliasing pour la génération des formes
