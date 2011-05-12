@@ -19,5 +19,7 @@ Changelog depuis la version 20110509
 
 - Suppresion des bordures intérieurs des formes : Pour le moment ça pose trop de problèmes !
 - Ajout des rotations de formes (sur les 3 axes)
-- La transparence devient global à la forme (texte+fond) et s'applique maintenant meme s'il n'y a que du texte (à finir !)
+- La transparence devient global à la forme (texte+fond) et s'applique maintenant meme s'il n'y a que du texte
 - Activation des options d'anti-aliasing pour la génération des formes
+- Ajout du type de ligne pour la bordure des formes
+- Ajout des ombres sur les formes
