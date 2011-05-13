@@ -16,6 +16,7 @@ Changelog depuis la version 20110509
 - Corrige un bug sur la fermeture de SDL qui n'était pas toujours effectuée
 - Corrige un bug sur le calcul de la taille des bordures extérieurs des formes
 - Corrige un bug lors des chargements de projet : Si un fichier n'est pas trouvé (déplacement/renommage), propose d'en sélectionner un autre
+- Corrige un bug dans le recadrage des images : les blocs ne doivent pas apparaitre sur l'image
 
 - Suppresion des bordures intérieurs des formes : Pour le moment ça pose trop de problèmes !
 - Ajout des rotations de formes (sur les 3 axes)
@@ -24,3 +25,4 @@ Changelog depuis la version 20110509
 - Ajout du type de ligne pour la bordure des formes
 - Ajout des ombres sur les formes
 - Déplacement des variables SoundVolume, StartPos et EndPos de cDiaporamaObject ou cDiaporamaShot vers cVideoFileWrapper
+- Charge les images dans les blocs dont le fond est positionné sur "Image from disk"
