@@ -18,6 +18,12 @@
 #  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 # ======================================================================
 
+#-------------------------------------------------------------
+# SYNTAXE IS :
+#   QMAKE PREFIX=xxx ffDiaporama_rsc.pro
+#       xxx could be /usr, /usr/local or /opt
+#--------------------------------------------------------------
+
 isEmpty(PREFIX) {
     PREFIX = /usr
 }

@@ -6,7 +6,7 @@
 
 ffDiaporama is a tools to make diaporama as video
 ffDiaporama is a Free Software (Open Source) and is distributed under the GNU General Public License (GPL) version 2
-See authors.txt for more copyright and credits information
+See licences.txt for more copyright information
 
 ffDiaporama_rsc is a subproject defined to contain ressources files
     -basic background image files
