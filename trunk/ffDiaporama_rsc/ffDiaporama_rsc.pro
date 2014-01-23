@@ -318,6 +318,6 @@ INSTALLS            += General
 unset(FINAL_INSTALLS)
 for(x,INSTALLS):FINAL_INSTALLS += install_$${x}
 final_ins.path = $$PREFIX/share/$$APPFOLDER
-final_ins.commands = find $$final_ins.path -type f -exec chmod 644 {} \;
+final_ins.commands = find $$PREFIX/share/$$APPFOLDER -type f -exec chmod 644 {} \;
 final_ins.depends = $${FINAL_INSTALLS}
 INSTALLS += final_ins
