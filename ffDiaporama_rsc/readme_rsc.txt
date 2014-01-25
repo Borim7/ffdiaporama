@@ -15,6 +15,9 @@ ffDiaporama_rsc is a subproject defined to contain ressources files
 **************************************************
 CHANGELOG
 **************************************************
+[Commit: 25/01/2014]
+    -fixed right of installed files on Linux (previous fix causes problems when creating distribution packages)
+
 [Commit: 23/01/2014]
     -rename readme.txt to readme_rsc.txt to keep it after main ffdiaporama package was installed
     -fixed right of installed files that no longer have +x flag [Linux]
