@@ -1,0 +1,642 @@
+# ======================================================================
+#  This file is part of ffDiaporama
+#  ffDiaporama is a tools to make diaporama as video
+#  Copyright (C) 2011-2014 Dominique Levray <domledom@laposte.net>
+#
+#  This program is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 2 of the License, or
+#  (at your option) any later version.
+#
+#  This program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  You should have received a copy of the GNU General Public License along
+#  with this program; if not, write to the Free Software Foundation, Inc.,
+#  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+# ======================================================================
+
+#-------------------------------------------------------------
+# SYNTAXE IS :
+#   QMAKE PREFIX=xxx ffDiaporama_texturemate.pro
+#       xxx could be /usr, /usr/local or /opt
+#--------------------------------------------------------------
+
+isEmpty(PREFIX) {
+    PREFIX = /usr
+}
+
+QT                     -= core gui
+QMAKE_STRIP             = echo
+QMAKE_INSTALL_PROGRAM   = install -m644
+APPFOLDER               = ffDiaporama
+TARGET                  = TMTBUILDVERSION.txt
+TEMPLATE                =
+
+OTHER_FILES += \
+    readme.txt \
+    licence.txt \
+    TMTBUILDVERSION.txt \
+    Asphalt/100.ic1 \
+    Asphalt/100.ic2 \
+    Asphalt/100.ic3 \
+    Asphalt/101.ic1 \
+    Asphalt/101.ic2 \
+    Asphalt/101.ic3 \
+    Asphalt/102.ic1 \
+    Asphalt/102.ic2 \
+    Asphalt/102.ic3 \
+    Asphalt/103.ic1 \
+    Asphalt/103.ic2 \
+    Asphalt/103.ic3 \
+    Asphalt/104.ic1 \
+    Asphalt/104.ic2 \
+    Asphalt/104.ic3 \
+    Asphalt/105.ic1 \
+    Asphalt/105.ic2 \
+    Asphalt/105.ic3 \
+    Asphalt/106.ic1 \
+    Asphalt/106.ic2 \
+    Asphalt/106.ic3 \
+    Asphalt/107.ic1 \
+    Asphalt/107.ic2 \
+    Asphalt/107.ic3 \
+    Asphalt/108.ic1 \
+    Asphalt/108.ic2 \
+    Asphalt/108.ic3 \
+    Asphalt/109.ic1 \
+    Asphalt/109.ic2 \
+    Asphalt/109.ic3 \
+    Asphalt/110.ic1 \
+    Asphalt/110.ic2 \
+    Asphalt/110.ic3 \
+    Asphalt/100.jpg \
+    Asphalt/101.jpg \
+    Asphalt/102.jpg \
+    Asphalt/103.jpg \
+    Asphalt/104.jpg \
+    Asphalt/105.jpg \
+    Asphalt/106.jpg \
+    Asphalt/107.jpg \
+    Asphalt/108.jpg \
+    Asphalt/109.jpg \
+    Asphalt/110.jpg \
+    Brick/201.ic1 \
+    Brick/201.ic2 \
+    Brick/201.ic3 \
+    Brick/202.ic1 \
+    Brick/202.ic2 \
+    Brick/202.ic3 \
+    Brick/203.ic1 \
+    Brick/203.ic2 \
+    Brick/203.ic3 \
+    Brick/204.ic1 \
+    Brick/204.ic2 \
+    Brick/204.ic3 \
+    Brick/205.ic1 \
+    Brick/205.ic2 \
+    Brick/205.ic3 \
+    Brick/206.ic1 \
+    Brick/206.ic2 \
+    Brick/206.ic3 \
+    Brick/207.ic1 \
+    Brick/207.ic2 \
+    Brick/207.ic3 \
+    Brick/208.ic1 \
+    Brick/208.ic2 \
+    Brick/208.ic3 \
+    Brick/209.ic1 \
+    Brick/209.ic2 \
+    Brick/209.ic3 \
+    Brick/210.ic1 \
+    Brick/210.ic2 \
+    Brick/210.ic3 \
+    Brick/211.ic1 \
+    Brick/211.ic2 \
+    Brick/211.ic3 \
+    Brick/212.ic1 \
+    Brick/212.ic2 \
+    Brick/212.ic3 \
+    Brick/201.jpg \
+    Brick/202.jpg \
+    Brick/203.jpg \
+    Brick/204.jpg \
+    Brick/205.jpg \
+    Brick/206.jpg \
+    Brick/207.jpg \
+    Brick/208.jpg \
+    Brick/209.jpg \
+    Brick/210.jpg \
+    Brick/211.jpg \
+    Brick/212.jpg \
+    Cement/300.ic1 \
+    Cement/300.ic2 \
+    Cement/300.ic3 \
+    Cement/301.ic1 \
+    Cement/301.ic2 \
+    Cement/301.ic3 \
+    Cement/302.ic1 \
+    Cement/302.ic2 \
+    Cement/302.ic3 \
+    Cement/303.ic1 \
+    Cement/303.ic2 \
+    Cement/303.ic3 \
+    Cement/304.ic1 \
+    Cement/304.ic2 \
+    Cement/304.ic3 \
+    Cement/305.ic1 \
+    Cement/305.ic2 \
+    Cement/305.ic3 \
+    Cement/306.ic1 \
+    Cement/306.ic2 \
+    Cement/306.ic3 \
+    Cement/307.ic1 \
+    Cement/307.ic2 \
+    Cement/307.ic3 \
+    Cement/308.ic1 \
+    Cement/308.ic2 \
+    Cement/308.ic3 \
+    Cement/309.ic1 \
+    Cement/309.ic2 \
+    Cement/309.ic3 \
+    Cement/310.ic1 \
+    Cement/310.ic2 \
+    Cement/310.ic3 \
+    Cement/311.ic1 \
+    Cement/311.ic2 \
+    Cement/311.ic3 \
+    Cement/312.ic1 \
+    Cement/312.ic2 \
+    Cement/312.ic3 \
+    Cement/313.ic1 \
+    Cement/313.ic2 \
+    Cement/313.ic3 \
+    Cement/314.ic1 \
+    Cement/314.ic2 \
+    Cement/314.ic3 \
+    Cement/315.ic1 \
+    Cement/315.ic2 \
+    Cement/315.ic3 \
+    Cement/316.ic1 \
+    Cement/316.ic2 \
+    Cement/316.ic3 \
+    Cement/300.jpg \
+    Cement/301.jpg \
+    Cement/302.jpg \
+    Cement/303.jpg \
+    Cement/304.jpg \
+    Cement/305.jpg \
+    Cement/306.jpg \
+    Cement/307.jpg \
+    Cement/308.jpg \
+    Cement/309.jpg \
+    Cement/310.jpg \
+    Cement/311.jpg \
+    Cement/312.jpg \
+    Cement/313.jpg \
+    Cement/314.jpg \
+    Cement/315.jpg \
+    Cement/316.jpg \
+    Clay/400.ic1 \
+    Clay/400.ic2 \
+    Clay/400.ic3 \
+    Clay/401.ic1 \
+    Clay/401.ic2 \
+    Clay/401.ic3 \
+    Clay/400.jpg \
+    Clay/401.jpg \
+    Clouds/500.ic1 \
+    Clouds/500.ic2 \
+    Clouds/500.ic3 \
+    Clouds/501.ic1 \
+    Clouds/501.ic2 \
+    Clouds/501.ic3 \
+    Clouds/502.ic1 \
+    Clouds/502.ic2 \
+    Clouds/502.ic3 \
+    Clouds/503.ic1 \
+    Clouds/503.ic2 \
+    Clouds/503.ic3 \
+    Clouds/504.ic1 \
+    Clouds/504.ic2 \
+    Clouds/504.ic3 \
+    Clouds/505.ic1 \
+    Clouds/505.ic2 \
+    Clouds/505.ic3 \
+    Clouds/506.ic1 \
+    Clouds/506.ic2 \
+    Clouds/506.ic3 \
+    Clouds/500.jpg \
+    Clouds/501.jpg \
+    Clouds/502.jpg \
+    Clouds/503.jpg \
+    Clouds/504.jpg \
+    Clouds/505.jpg \
+    Clouds/506.jpg \
+    Cobblestone/600.ic1 \
+    Cobblestone/600.ic2 \
+    Cobblestone/600.ic3 \
+    Cobblestone/601.ic1 \
+    Cobblestone/601.ic2 \
+    Cobblestone/601.ic3 \
+    Cobblestone/602.ic1 \
+    Cobblestone/602.ic2 \
+    Cobblestone/602.ic3 \
+    Cobblestone/604.ic1 \
+    Cobblestone/604.ic2 \
+    Cobblestone/604.ic3 \
+    Cobblestone/605.ic1 \
+    Cobblestone/605.ic2 \
+    Cobblestone/605.ic3 \
+    Cobblestone/600.jpg \
+    Cobblestone/601.jpg \
+    Cobblestone/602.jpg \
+    Cobblestone/604.jpg \
+    Cobblestone/605.jpg \
+    Digital/700.ic1 \
+    Digital/700.ic2 \
+    Digital/700.ic3 \
+    Digital/701.ic1 \
+    Digital/701.ic2 \
+    Digital/701.ic3 \
+    Digital/702.ic1 \
+    Digital/702.ic2 \
+    Digital/702.ic3 \
+    Digital/703.ic1 \
+    Digital/703.ic2 \
+    Digital/703.ic3 \
+    Digital/704.ic1 \
+    Digital/704.ic2 \
+    Digital/704.ic3 \
+    Digital/705.ic1 \
+    Digital/705.ic2 \
+    Digital/705.ic3 \
+    Digital/706.ic1 \
+    Digital/706.ic2 \
+    Digital/706.ic3 \
+    Digital/707.ic1 \
+    Digital/707.ic2 \
+    Digital/707.ic3 \
+    Digital/708.ic1 \
+    Digital/708.ic2 \
+    Digital/708.ic3 \
+    Digital/700.jpg \
+    Digital/701.jpg \
+    Digital/702.jpg \
+    Digital/703.jpg \
+    Digital/704.jpg \
+    Digital/705.jpg \
+    Digital/706.jpg \
+    Digital/707.jpg \
+    Digital/708.jpg \
+    Fabric/800.ic1 \
+    Fabric/800.ic2 \
+    Fabric/800.ic3 \
+    Fabric/801.ic1 \
+    Fabric/801.ic2 \
+    Fabric/801.ic3 \
+    Fabric/802.ic1 \
+    Fabric/802.ic2 \
+    Fabric/802.ic3 \
+    Fabric/803.ic1 \
+    Fabric/803.ic2 \
+    Fabric/803.ic3 \
+    Fabric/804.ic1 \
+    Fabric/804.ic2 \
+    Fabric/804.ic3 \
+    Fabric/805.ic1 \
+    Fabric/805.ic2 \
+    Fabric/805.ic3 \
+    Fabric/806.ic1 \
+    Fabric/806.ic2 \
+    Fabric/806.ic3 \
+    Fabric/807.ic1 \
+    Fabric/807.ic2 \
+    Fabric/807.ic3 \
+    Fabric/808.ic1 \
+    Fabric/808.ic2 \
+    Fabric/808.ic3 \
+    Fabric/809.ic1 \
+    Fabric/809.ic2 \
+    Fabric/809.ic3 \
+    Fabric/811.ic1 \
+    Fabric/811.ic2 \
+    Fabric/811.ic3 \
+    Fabric/812.ic1 \
+    Fabric/812.ic2 \
+    Fabric/812.ic3 \
+    Fabric/813.ic1 \
+    Fabric/813.ic2 \
+    Fabric/813.ic3 \
+    Fabric/814.ic1 \
+    Fabric/814.ic2 \
+    Fabric/814.ic3 \
+    Fabric/815.ic1 \
+    Fabric/815.ic2 \
+    Fabric/815.ic3 \
+    Fabric/816.ic1 \
+    Fabric/816.ic2 \
+    Fabric/816.ic3 \
+    Fabric/817.ic1 \
+    Fabric/817.ic2 \
+    Fabric/817.ic3 \
+    Fabric/800.jpg \
+    Fabric/801.jpg \
+    Fabric/802.jpg \
+    Fabric/803.jpg \
+    Fabric/804.jpg \
+    Fabric/805.jpg \
+    Fabric/806.jpg \
+    Fabric/807.jpg \
+    Fabric/808.jpg \
+    Fabric/809.jpg \
+    Fabric/811.jpg \
+    Fabric/812.jpg \
+    Fabric/813.jpg \
+    Fabric/814.jpg \
+    Fabric/815.jpg \
+    Fabric/816.jpg \
+    Fabric/817.jpg \
+    Glass/900.ic1 \
+    Glass/900.ic2 \
+    Glass/900.ic3 \
+    Glass/901.ic1 \
+    Glass/901.ic2 \
+    Glass/901.ic3 \
+    Glass/902.ic1 \
+    Glass/902.ic2 \
+    Glass/902.ic3 \
+    Glass/900.jpg \
+    Glass/901.jpg \
+    Glass/902.jpg \
+    Granite/1000.ic1 \
+    Granite/1000.ic2 \
+    Granite/1000.ic3 \
+    Granite/1001.ic1 \
+    Granite/1001.ic2 \
+    Granite/1001.ic3 \
+    Granite/1002.ic1 \
+    Granite/1002.ic2 \
+    Granite/1002.ic3 \
+    Granite/1003.ic1 \
+    Granite/1003.ic2 \
+    Granite/1003.ic3 \
+    Granite/1004.ic1 \
+    Granite/1004.ic2 \
+    Granite/1004.ic3 \
+    Granite/1005.ic1 \
+    Granite/1005.ic2 \
+    Granite/1005.ic3 \
+    Granite/1006.ic1 \
+    Granite/1006.ic2 \
+    Granite/1006.ic3 \
+    Granite/1007.ic1 \
+    Granite/1007.ic2 \
+    Granite/1007.ic3 \
+    Granite/1008.ic1 \
+    Granite/1008.ic2 \
+    Granite/1008.ic3 \
+    Granite/1000.jpg \
+    Granite/1001.jpg \
+    Granite/1002.jpg \
+    Granite/1003.jpg \
+    Granite/1004.jpg \
+    Granite/1005.jpg \
+    Granite/1006.jpg \
+    Granite/1007.jpg \
+    Granite/1008.jpg \
+    Metal/1100.ic1 \
+    Metal/1100.ic2 \
+    Metal/1100.ic3 \
+    Metal/1101.ic1 \
+    Metal/1101.ic2 \
+    Metal/1101.ic3 \
+    Metal/1102.ic1 \
+    Metal/1102.ic2 \
+    Metal/1102.ic3 \
+    Metal/1103.ic1 \
+    Metal/1103.ic2 \
+    Metal/1103.ic3 \
+    Metal/1104.ic1 \
+    Metal/1104.ic2 \
+    Metal/1104.ic3 \
+    Metal/1105.ic1 \
+    Metal/1105.ic2 \
+    Metal/1105.ic3 \
+    Metal/1106.ic1 \
+    Metal/1106.ic2 \
+    Metal/1106.ic3 \
+    Metal/1107.ic1 \
+    Metal/1107.ic2 \
+    Metal/1107.ic3 \
+    Metal/1108.ic1 \
+    Metal/1108.ic2 \
+    Metal/1108.ic3 \
+    Metal/1109.ic1 \
+    Metal/1109.ic2 \
+    Metal/1109.ic3 \
+    Metal/1100.jpg \
+    Metal/1101.jpg \
+    Metal/1102.jpg \
+    Metal/1103.jpg \
+    Metal/1104.jpg \
+    Metal/1105.jpg \
+    Metal/1106.jpg \
+    Metal/1107.jpg \
+    Metal/1108.jpg \
+    Metal/1109.jpg \
+    Paint/1200.ic1 \
+    Paint/1200.ic2 \
+    Paint/1200.ic3 \
+    Paint/1201.ic1 \
+    Paint/1201.ic2 \
+    Paint/1201.ic3 \
+    Paint/1202.ic1 \
+    Paint/1202.ic2 \
+    Paint/1202.ic3 \
+    Paint/1203.ic1 \
+    Paint/1203.ic2 \
+    Paint/1203.ic3 \
+    Paint/1200.jpg \
+    Paint/1201.jpg \
+    Paint/1202.jpg \
+    Paint/1203.jpg \
+    Paper/1300.ic1 \
+    Paper/1300.ic2 \
+    Paper/1300.ic3 \
+    Paper/1301.ic1 \
+    Paper/1301.ic2 \
+    Paper/1301.ic3 \
+    Paper/1302.ic1 \
+    Paper/1302.ic2 \
+    Paper/1302.ic3 \
+    Paper/1300.jpg \
+    Paper/1301.jpg \
+    Paper/1302.jpg \
+    Plants/1400.ic1 \
+    Plants/1400.ic2 \
+    Plants/1400.ic3 \
+    Plants/1401.ic1 \
+    Plants/1401.ic2 \
+    Plants/1401.ic3 \
+    Plants/1402.ic1 \
+    Plants/1402.ic2 \
+    Plants/1402.ic3 \
+    Plants/1403.ic1 \
+    Plants/1403.ic2 \
+    Plants/1403.ic3 \
+    Plants/1404.ic1 \
+    Plants/1404.ic2 \
+    Plants/1404.ic3 \
+    Plants/1405.ic1 \
+    Plants/1405.ic2 \
+    Plants/1405.ic3 \
+    Plants/1406.ic1 \
+    Plants/1406.ic2 \
+    Plants/1406.ic3 \
+    Plants/1407.ic1 \
+    Plants/1407.ic2 \
+    Plants/1407.ic3 \
+    Plants/1408.ic1 \
+    Plants/1408.ic2 \
+    Plants/1408.ic3 \
+    Plants/1409.ic1 \
+    Plants/1409.ic2 \
+    Plants/1409.ic3 \
+    Plants/1410.ic1 \
+    Plants/1410.ic2 \
+    Plants/1410.ic3 \
+    Plants/1411.ic1 \
+    Plants/1411.ic2 \
+    Plants/1411.ic3 \
+    Plants/1400.jpg \
+    Plants/1401.jpg \
+    Plants/1402.jpg \
+    Plants/1403.jpg \
+    Plants/1404.jpg \
+    Plants/1405.jpg \
+    Plants/1406.jpg \
+    Plants/1407.jpg \
+    Plants/1408.jpg \
+    Plants/1409.jpg \
+    Plants/1410.jpg \
+    Plants/1411.jpg \
+    Wall/1500.ic1 \
+    Wall/1500.ic2 \
+    Wall/1500.ic3 \
+    Wall/1501.ic1 \
+    Wall/1501.ic2 \
+    Wall/1501.ic3 \
+    Wall/1502.ic1 \
+    Wall/1502.ic2 \
+    Wall/1502.ic3 \
+    Wall/1503.ic1 \
+    Wall/1503.ic2 \
+    Wall/1503.ic3 \
+    Wall/1504.ic1 \
+    Wall/1504.ic2 \
+    Wall/1504.ic3 \
+    Wall/1500.jpg \
+    Wall/1501.jpg \
+    Wall/1502.jpg \
+    Wall/1503.jpg \
+    Wall/1504.jpg \
+    Wood/1600.ic1 \
+    Wood/1600.ic2 \
+    Wood/1600.ic3 \
+    Wood/1601.ic1 \
+    Wood/1601.ic2 \
+    Wood/1601.ic3 \
+    Wood/1602.ic1 \
+    Wood/1602.ic2 \
+    Wood/1602.ic3 \
+    Wood/1603.ic1 \
+    Wood/1603.ic2 \
+    Wood/1603.ic3 \
+    Wood/1604.ic1 \
+    Wood/1604.ic2 \
+    Wood/1604.ic3 \
+    Wood/1605.ic1 \
+    Wood/1605.ic2 \
+    Wood/1605.ic3 \
+    Wood/1606.ic1 \
+    Wood/1606.ic2 \
+    Wood/1606.ic3 \
+    Wood/1607.ic1 \
+    Wood/1607.ic2 \
+    Wood/1607.ic3 \
+    Wood/1608.ic1 \
+    Wood/1608.ic2 \
+    Wood/1608.ic3 \
+    Wood/1609.ic1 \
+    Wood/1609.ic2 \
+    Wood/1609.ic3 \
+    Wood/1610.ic1 \
+    Wood/1610.ic2 \
+    Wood/1610.ic3 \
+    Wood/1611.ic1 \
+    Wood/1611.ic2 \
+    Wood/1611.ic3 \
+    Wood/1612.ic1 \
+    Wood/1612.ic2 \
+    Wood/1612.ic3 \
+    Wood/1613.ic1 \
+    Wood/1613.ic2 \
+    Wood/1613.ic3 \
+    Wood/1600.jpg \
+    Wood/1601.jpg \
+    Wood/1602.jpg \
+    Wood/1603.jpg \
+    Wood/1604.jpg \
+    Wood/1605.jpg \
+    Wood/1606.jpg \
+    Wood/1607.jpg \
+    Wood/1608.jpg \
+    Wood/1609.jpg \
+    Wood/1610.jpg \
+    Wood/1611.jpg \
+    Wood/1612.jpg \
+    Wood/1613.jpg
+
+#--------------------------------------------------------------
+# INSTALLATION
+#--------------------------------------------------------------
+
+background.path     = $$PREFIX/share/$$APPFOLDER/background
+background.files    = background/*.*
+Asphalt.path        =$$PREFIX/share/$$APPFOLDER/background/Asphalt
+Asphalt.files       =Asphalt/*.*
+Brick.path          =$$PREFIX/share/$$APPFOLDER/background/Brick
+Brick.files         =Brick/*.*
+Cement.path         =$$PREFIX/share/$$APPFOLDER/background/Cement
+Cement.files        =Cement/*.*
+Clay.path           =$$PREFIX/share/$$APPFOLDER/background/Clay
+Clay.files          =Clay/*.*
+Clouds.path         =$$PREFIX/share/$$APPFOLDER/background/Clouds
+Clouds.files        =Clouds/*.*
+Cobblestone.path    =$$PREFIX/share/$$APPFOLDER/background/Cobblestone
+Cobblestone.files   =Cobblestone/*.*
+Digital.path        =$$PREFIX/share/$$APPFOLDER/background/Digital
+Digital.files       =Digital/*.*
+Fabric.path         =$$PREFIX/share/$$APPFOLDER/background/Fabric
+Fabric.files        =Fabric/*.*
+Glass.path          =$$PREFIX/share/$$APPFOLDER/background/Glass
+Glass.files         =Glass/*.*
+Granite.path        =$$PREFIX/share/$$APPFOLDER/background/Granite
+Granite.files       =Granite/*.*
+Metal.path          =$$PREFIX/share/$$APPFOLDER/background/Metal
+Metal.files         =Metal/*.*
+Paint.path          =$$PREFIX/share/$$APPFOLDER/background/Paint
+Paint.files         =Paint/*.*
+Paper.path          =$$PREFIX/share/$$APPFOLDER/background/Paper
+Paper.files         =Paper/*.*
+Plants.path         =$$PREFIX/share/$$APPFOLDER/background/Plants
+Plants.files        =Plants/*.*
+Wall.path           =$$PREFIX/share/$$APPFOLDER/background/Wall
+Wall.files          =Wall/*.*
+Wood.path           =$$PREFIX/share/$$APPFOLDER/background/Wood
+Wood.files          =Wood/*.*
+
+INSTALLS += Asphalt Brick Cement Clay Clouds Cobblestone Digital Fabric Glass Granite Metal Paint Paper Plants Wall Wood background
