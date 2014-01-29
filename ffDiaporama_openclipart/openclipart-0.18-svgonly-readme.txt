@@ -1,0 +1,22 @@
+============================================================================
+
+               ffDiaporama-openclipart Version 0.18
+
+============================================================================
+
+ffDiaporama-clipart is a part of ffDiaporama
+
+ffDiaporama is a tools to make diaporama as video:
+	http://ffdiaporama.tuxfamily.org/
+
+On Linux, ffDiaporama-clipart is just a link to Open Clip Art Library 0.18
+
+On Windows, ffDiaporama-clipart install Open Clip Art Library 0.18 into
+ffdiaporama clipart subfolder
+
+Original content: http://ftp.osuosl.org/pub/openclipart/downloads/0.18/openclipart-0.18-svgonly.zip
+
+============================================================================
+
+Note: ffDiaporama must be installed before to install ffDiaporama-clipart
+
