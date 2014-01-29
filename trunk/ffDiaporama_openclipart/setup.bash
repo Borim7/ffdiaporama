@@ -12,10 +12,10 @@ if ! wget -t 0 http://ftp.osuosl.org/pub/openclipart/downloads/0.18/openclipart-
     cd ~
     exit 1
 else
-    unzip openclipart-0.18-svgonly.zip -d /usr/share/ffDiaporama/clipart/openclipart-0.18-svgonly/
+    unzip openclipart-0.18-svgonly.zip -d /usr/share/ffDiaporama/clipart/
 fi
 
 #==============================================================================
 
-cp openclipart-0.18-svgonly-licence.txt /usr/share/ffDiaporama/clipart/openclipart-0.18-svgonly/
-cp openclipart-0.18-svgonly-readme.txt /usr/share/ffDiaporama/clipart/openclipart-0.18-svgonly/
+cp openclipart-0.18-svgonly-licence.txt /usr/share/ffDiaporama/clipart/
+cp openclipart-0.18-svgonly-readme.txt /usr/share/ffDiaporama/clipart/
