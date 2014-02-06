@@ -20,3 +20,16 @@ Original content: http://ftp.osuosl.org/pub/openclipart/downloads/0.18/openclipa
 
 Note: ffDiaporama must be installed before to install ffDiaporama-clipart
 
+============================================================================
+
+Changelog:
+
+    2014.0205:
+        Use openclipart standard package on Fedora systems instead of downloading zip file from openclipart.org
+
+    2014.0203:
+        Use openclipart-svg standard package on openSUSE systems instead of downloading zip file from openclipart.org
+
+    2014.0130:
+        Replace wget with curl
+        No longer download and unzip file openclipart web site if a distribution package was installed
