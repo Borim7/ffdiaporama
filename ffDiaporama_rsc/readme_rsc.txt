@@ -15,6 +15,9 @@ ffDiaporama_rsc is a subproject defined to contain ressources files
 **************************************************
 CHANGELOG
 **************************************************
+[Commit: 21/02/2014]
+    -Replace some luma files with files proprosed by Alexander Goponenko and add new files
+
 [Commit: 25/01/2014]
     -fixed right of installed files on Linux (previous fix causes problems when creating distribution packages)
 
