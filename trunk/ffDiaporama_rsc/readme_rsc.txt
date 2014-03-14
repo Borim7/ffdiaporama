@@ -15,6 +15,9 @@ ffDiaporama_rsc is a subproject defined to contain ressources files
 **************************************************
 CHANGELOG
 **************************************************
+[Commit: 10/03/2014]
+    -Fix error in vertical bar for 2 luma clock
+
 [Commit: 21/02/2014]
     -Replace some luma files with files proprosed by Alexander Goponenko and add new files
 
