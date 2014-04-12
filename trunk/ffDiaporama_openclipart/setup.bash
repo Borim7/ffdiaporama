@@ -50,7 +50,7 @@ elif [ -d /usr/share/clipart/openclipart ]; then
 else
     curl -o openclipart-0.18-svgonly.zip http://ftp.osuosl.org/pub/openclipart/downloads/0.18/openclipart-0.18-svgonly.zip
     if [[ ! -f openclipart-0.18-svgonly.zip ]]; then
-        echo Impossible to get ffDiaporama-openclipart from ffDiaporama Web site
+        echo Impossible to get openclipart-0.18-svgonly.zip from openclipart Web site
         cd ~
         exit 1
     fi
