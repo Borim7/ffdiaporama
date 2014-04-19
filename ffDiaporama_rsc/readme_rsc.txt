@@ -15,6 +15,9 @@ ffDiaporama_rsc is a subproject defined to contain ressources files
 **************************************************
 CHANGELOG
 **************************************************
+[Commit: 18/04/2014]
+    -Update ffmpeg on Windows to version 2.2.1
+
 [Commit: 10/03/2014]
     -Fix error in vertical bar for 2 luma clock
 
