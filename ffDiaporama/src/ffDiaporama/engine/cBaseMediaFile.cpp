@@ -35,9 +35,9 @@
 // EXIV2 PART
 //****************************************************************************************************************************************************************
 #ifdef Q_OS_WIN
-    #include <exif.hpp>
+    #include <exiv2/exif.hpp>
     #if (EXIV2_MAJOR_VERSION>=0)||((EXIV2_MAJOR_VERSION==0)&&(EXIV2_MINOR_VERSION>20))
-        #include <exiv2.hpp>
+        #include <exiv2/exiv2.hpp>
         bool Exiv2WithPreview=true;
     #else
         bool Exiv2WithPreview=false;
@@ -124,7 +124,7 @@ int  Exiv2PatchVersion=EXIV2_PATCH_VERSION;
 #define VC_USERDATA     0x00000008
 #define VC_FLUSHED      0x00000010
 
-#define PIXFMT          PIX_FMT_RGB24
+#define PIXFMT          AV_PIX_FMT_RGB24
 #define QTPIXFMT        QImage::Format_RGB888
 
 //****************************************************************************************************************************************************************
@@ -2598,7 +2598,7 @@ bool cVideoFile::GetChildFullInformationFromFile(bool,cCustomIcon *Icon,QStringL
                             AVFrame *FrameRGB=ALLOCFRAME();
                             if ((FrameRGB)&&(!Thumbnail.isNull())) {
                                 avpicture_fill((AVPicture *)FrameRGB,Thumbnail.bits(),PIXFMT,RealW,RealH);
-                                struct SwsContext *img_convert_ctx=sws_getContext(FrameYUV->width,FrameYUV->height,(PixelFormat)FrameYUV->format,RealW,RealH,PIXFMT,SWS_FAST_BILINEAR,NULL,NULL,NULL);
+                                struct SwsContext *img_convert_ctx=sws_getContext(FrameYUV->width,FrameYUV->height,(AVPixelFormat)FrameYUV->format,RealW,RealH,PIXFMT,SWS_FAST_BILINEAR,NULL,NULL,NULL);
                                 if (img_convert_ctx!=NULL) {
                                     int ret = sws_scale(img_convert_ctx,FrameYUV->data,FrameYUV->linesize,0,FrameYUV->height,FrameRGB->data,FrameRGB->linesize);
                                     if (ret>0) {
@@ -3754,7 +3754,7 @@ QImage *cVideoFile::ConvertYUVToRGB(bool PreviewMode,AVFrame *Frame) {
         struct SwsContext *img_convert_ctx=sws_getContext(
             Frame->width,                                                     // Src width
             Frame->height,                                                    // Src height
-            (PixelFormat)Frame->format,                                       // Src Format
+            (AVPixelFormat)Frame->format,                                       // Src Format
             W,                                                                // Destination width
             H,                                                                // Destination height
             PIXFMT,                                                           // Destination Format
@@ -3837,12 +3837,12 @@ QImage *cVideoFile::ImageAt(bool PreviewMode,int64_t Position,cSoundBlockList *S
 int cVideoFile::getThreadFlags(AVCodecID ID) {
     int Ret=0;
     switch (ID) {
-        case CODEC_ID_PRORES:
-        case CODEC_ID_MPEG1VIDEO:
-        case CODEC_ID_DVVIDEO:
-        case CODEC_ID_MPEG2VIDEO:   Ret=FF_THREAD_SLICE;                    break;
-        case CODEC_ID_H264 :        Ret=FF_THREAD_FRAME|FF_THREAD_SLICE;    break;
-        default:                    Ret=FF_THREAD_FRAME;                    break;
+        case AV_CODEC_ID_PRORES:
+        case AV_CODEC_ID_MPEG1VIDEO:
+        case AV_CODEC_ID_DVVIDEO:
+        case AV_CODEC_ID_MPEG2VIDEO:   Ret=FF_THREAD_SLICE;                    break;
+        case AV_CODEC_ID_H264 :        Ret=FF_THREAD_FRAME|FF_THREAD_SLICE;    break;
+        default:                       Ret=FF_THREAD_FRAME;                    break;
     }
     return Ret;
 }

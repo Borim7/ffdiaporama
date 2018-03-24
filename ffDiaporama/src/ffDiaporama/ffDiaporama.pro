@@ -127,168 +127,181 @@ unix {
                    ffDiaporama.url      # URL file to be install on windows system
 
 } else:win32 {
+    # use system libs, or separate libs
+    WIN_USE_SYSTEM_LIBS=1
 
-    contains(QMAKE_HOST.arch,x86_64) {
-        DEFINES+=Q_OS_WIN64
-        message("x86_64 build")
-        INCLUDEPATH += "../../../win_src/ffmpeg-2.2.1-win64-dev/include"
-        LIBS        += -L"../../../win_src/ffmpeg-2.2.1-win64-dev/lib"
-        CONFIG(debug, debug|release) {
-            LIBS += -L"F:\Dev\ffdiaporama\trunk\Win64Debug\src\ffDiaporama_lib\debug"
+    equals(WIN_USE_SYSTEM_LIBS, 0) {
+        contains(QMAKE_HOST.arch,x86_64) {
+            DEFINES+=Q_OS_WIN64
+            message("x86_64 build")
+            INCLUDEPATH += "../../../win_src/ffmpeg-2.2.1-win64-dev/include"
+            LIBS        += -L"../../../win_src/ffmpeg-2.2.1-win64-dev/lib"
+            CONFIG(debug, debug|release) {
+                LIBS += -L"F:\Dev\ffdiaporama\trunk\Win64Debug\src\ffDiaporama_lib\debug"
+            } else {
+                LIBS += -L"F:\Dev\ffdiaporama\trunk\Win64Release\src\ffDiaporama_lib\release"
+            }
         } else {
-            LIBS += -L"F:\Dev\ffdiaporama\trunk\Win64Release\src\ffDiaporama_lib\release"
+            DEFINES+=Q_OS_WIN32
+            message("x86 build")
+            INCLUDEPATH += "../../../win_src/ffmpeg-2.2.1-win32-dev/include"
+            LIBS        += -L"../../../win_src/ffmpeg-2.2.1-win32-dev/lib"
+            CONFIG(debug, debug|release) {
+                LIBS += -L"F:\Dev\ffdiaporama\trunk\Win32Debug\src\ffDiaporama_lib\debug"
+            } else {
+                LIBS += -L"F:\Dev\ffdiaporama\trunk\Win32Release\src\ffDiaporama_lib\release"
+            }
         }
+
+        CONFIG      += sql                                                      #------ I don't know why, but windows version need sql module in config directive
+
+        INCLUDEPATH += .                                                        #------ I don't know why, but windows need this !
+        INCLUDEPATH += ../exiv2
+        INCLUDEPATH += "../../../win_src/exiv2-0.24/src"
+        INCLUDEPATH += "../../../win_src/msinttypes"
+
+        SOURCES += \
+            ../../../win_src/exiv2-0.24/src/xmpsidecar.cpp \
+            ../../../win_src/exiv2-0.24/src/xmp.cpp \
+            ../../../win_src/exiv2-0.24/src/version.cpp \
+            ../../../win_src/exiv2-0.24/src/value.cpp \
+            ../../../win_src/exiv2-0.24/src/utils.cpp \
+            ../../../win_src/exiv2-0.24/src/types.cpp \
+            ../../../win_src/exiv2-0.24/src/tiffvisitor.cpp \
+            ../../../win_src/exiv2-0.24/src/tiffimage.cpp \
+            ../../../win_src/exiv2-0.24/src/tiffcomposite.cpp \
+            ../../../win_src/exiv2-0.24/src/tgaimage.cpp \
+            ../../../win_src/exiv2-0.24/src/tags.cpp \
+            ../../../win_src/exiv2-0.24/src/sonymn.cpp \
+            ../../../win_src/exiv2-0.24/src/sigmamn.cpp \
+            ../../../win_src/exiv2-0.24/src/samsungmn.cpp \
+            ../../../win_src/exiv2-0.24/src/rw2image.cpp \
+            ../../../win_src/exiv2-0.24/src/rafimage.cpp \
+            ../../../win_src/exiv2-0.24/src/psdimage.cpp \
+            ../../../win_src/exiv2-0.24/src/properties.cpp \
+            ../../../win_src/exiv2-0.24/src/preview.cpp \
+            ../../../win_src/exiv2-0.24/src/pngimage.cpp \
+            ../../../win_src/exiv2-0.24/src/pngchunk.cpp \
+            ../../../win_src/exiv2-0.24/src/pgfimage.cpp \
+            ../../../win_src/exiv2-0.24/src/pentaxmn.cpp \
+            ../../../win_src/exiv2-0.24/src/panasonicmn.cpp \
+            ../../../win_src/exiv2-0.24/src/orfimage.cpp \
+            ../../../win_src/exiv2-0.24/src/olympusmn.cpp \
+            ../../../win_src/exiv2-0.24/src/nikonmn.cpp \
+            ../../../win_src/exiv2-0.24/src/mrwimage.cpp \
+            ../../../win_src/exiv2-0.24/src/minoltamn.cpp \
+            ../../../win_src/exiv2-0.24/src/metadatum.cpp \
+            ../../../win_src/exiv2-0.24/src/makernote.cpp \
+            ../../../win_src/exiv2-0.24/src/localtime.c \
+            ../../../win_src/exiv2-0.24/src/jpgimage.cpp \
+            ../../../win_src/exiv2-0.24/src/jp2image.cpp \
+            ../../../win_src/exiv2-0.24/src/iptc.cpp \
+            ../../../win_src/exiv2-0.24/src/image.cpp \
+            ../../../win_src/exiv2-0.24/src/gifimage.cpp \
+            ../../../win_src/exiv2-0.24/src/getopt_win32.c \
+            ../../../win_src/exiv2-0.24/src/futils.cpp \
+            ../../../win_src/exiv2-0.24/src/fujimn.cpp \
+            ../../../win_src/exiv2-0.24/src/exif.cpp \
+            ../../../win_src/exiv2-0.24/src/error.cpp \
+            ../../../win_src/exiv2-0.24/src/epsimage.cpp \
+            ../../../win_src/exiv2-0.24/src/easyaccess.cpp \
+            ../../../win_src/exiv2-0.24/src/datasets.cpp \
+            ../../../win_src/exiv2-0.24/src/crwimage.cpp \
+            ../../../win_src/exiv2-0.24/src/cr2image.cpp \
+            ../../../win_src/exiv2-0.24/src/convert.cpp \
+            ../../../win_src/exiv2-0.24/src/canonmn.cpp \
+            ../../../win_src/exiv2-0.24/src/bmpimage.cpp \
+            ../../../win_src/exiv2-0.24/src/basicio.cpp \
+            ../../../win_src/exiv2-0.24/src/asfvideo.cpp \
+            ../../../win_src/exiv2-0.24/src/matroskavideo.cpp \
+            ../../../win_src/exiv2-0.24/src/quicktimevideo.cpp \
+            ../../../win_src/exiv2-0.24/src/riffvideo.cpp
+
+        HEADERS += \
+            ../../../win_src/exiv2-0.24/src/xmpsidecar.hpp \
+            ../../../win_src/exiv2-0.24/src/xmp.hpp \
+            ../../../win_src/exiv2-0.24/src/version.hpp \
+            ../../../win_src/exiv2-0.24/src/value.hpp \
+            ../../../win_src/exiv2-0.24/src/utils.hpp \
+            ../../../win_src/exiv2-0.24/src/tzfile.h \
+            ../../../win_src/exiv2-0.24/src/types.hpp \
+            ../../../win_src/exiv2-0.24/src/timegm.h \
+            ../../../win_src/exiv2-0.24/src/tiffvisitor_int.hpp \
+            ../../../win_src/exiv2-0.24/src/tiffimage_int.hpp \
+            ../../../win_src/exiv2-0.24/src/tiffimage.hpp \
+            ../../../win_src/exiv2-0.24/src/tifffwd_int.hpp \
+            ../../../win_src/exiv2-0.24/src/tiffcomposite_int.hpp \
+            ../../../win_src/exiv2-0.24/src/tgaimage.hpp \
+            ../../../win_src/exiv2-0.24/src/tags_int.hpp \
+            ../../../win_src/exiv2-0.24/src/tags.hpp \
+            ../../../win_src/exiv2-0.24/src/sonymn_int.hpp \
+            ../../../win_src/exiv2-0.24/src/sigmamn_int.hpp \
+            ../../../win_src/exiv2-0.24/src/samsungmn_int.hpp \
+            ../../../win_src/exiv2-0.24/src/rw2image_int.hpp \
+            ../../../win_src/exiv2-0.24/src/rw2image.hpp \
+            ../../../win_src/exiv2-0.24/src/rcsid_int.hpp \
+            ../../../win_src/exiv2-0.24/src/rafimage.hpp \
+            ../../../win_src/exiv2-0.24/src/psdimage.hpp \
+            ../../../win_src/exiv2-0.24/src/properties.hpp \
+            ../../../win_src/exiv2-0.24/src/private.h \
+            ../../../win_src/exiv2-0.24/src/preview.hpp \
+            ../../../win_src/exiv2-0.24/src/pngimage.hpp \
+            ../../../win_src/exiv2-0.24/src/pngchunk_int.hpp \
+            ../../../win_src/exiv2-0.24/src/pgfimage.hpp \
+            ../../../win_src/exiv2-0.24/src/pentaxmn_int.hpp \
+            ../../../win_src/exiv2-0.24/src/panasonicmn_int.hpp \
+            ../../../win_src/exiv2-0.24/src/orfimage_int.hpp \
+            ../../../win_src/exiv2-0.24/src/orfimage.hpp \
+            ../../../win_src/exiv2-0.24/src/olympusmn_int.hpp \
+            ../../../win_src/exiv2-0.24/src/nikonmn_int.hpp \
+            ../../../win_src/exiv2-0.24/src/mrwimage.hpp \
+            ../../../win_src/exiv2-0.24/src/minoltamn_int.hpp \
+            ../../../win_src/exiv2-0.24/src/metadatum.hpp \
+            ../../../win_src/exiv2-0.24/src/makernote_int.hpp \
+            ../../../win_src/exiv2-0.24/src/jpgimage.hpp \
+            ../../../win_src/exiv2-0.24/src/jp2image.hpp \
+            ../../../win_src/exiv2-0.24/src/iptc.hpp \
+            ../../../win_src/exiv2-0.24/src/image.hpp \
+            ../../../win_src/exiv2-0.24/src/i18n.h \
+            ../../../win_src/exiv2-0.24/src/gifimage.hpp \
+            ../../../win_src/exiv2-0.24/src/getopt_win32.h \
+            ../../../win_src/exiv2-0.24/src/futils.hpp \
+            ../../../win_src/exiv2-0.24/src/fujimn_int.hpp \
+            ../../../win_src/exiv2-0.24/src/exiv2app.hpp \
+            ../../../win_src/exiv2-0.24/src/exiv2.hpp \
+            ../../../win_src/exiv2-0.24/src/exif.hpp \
+            ../../../win_src/exiv2-0.24/src/error.hpp \
+            ../../../win_src/exiv2-0.24/src/epsimage.hpp \
+            ../../../win_src/exiv2-0.24/src/easyaccess.hpp \
+            ../../../win_src/exiv2-0.24/src/datasets.hpp \
+            ../../../win_src/exiv2-0.24/src/crwimage_int.hpp \
+            ../../../win_src/exiv2-0.24/src/crwimage.hpp \
+            ../../../win_src/exiv2-0.24/src/cr2image_int.hpp \
+            ../../../win_src/exiv2-0.24/src/cr2image.hpp \
+            ../../../win_src/exiv2-0.24/src/convert.hpp \
+            ../../../win_src/exiv2-0.24/src/canonmn_int.hpp \
+            ../../../win_src/exiv2-0.24/src/bmpimage.hpp \
+            ../../../win_src/exiv2-0.24/src/basicio.hpp \
+            ../../../win_src/exiv2-0.24/src/actions.hpp \
+            ../../../win_src/exiv2-0.24/src/asfvideo.hpp \
+            ../../../win_src/exiv2-0.24/src/matroskavideo.hpp \
+            ../../../win_src/exiv2-0.24/src/quicktimevideo.hpp \
+            ../../../win_src/exiv2-0.24/src/riffvideo.hpp \
+                ../exiv2/exv_msvc.h
+
     } else {
-        DEFINES+=Q_OS_WIN32
-        message("x86 build")
-        INCLUDEPATH += "../../../win_src/ffmpeg-2.2.1-win32-dev/include"
-        LIBS        += -L"../../../win_src/ffmpeg-2.2.1-win32-dev/lib"
-        CONFIG(debug, debug|release) {
-            LIBS += -L"F:\Dev\ffdiaporama\trunk\Win32Debug\src\ffDiaporama_lib\debug"
-        } else {
-            LIBS += -L"F:\Dev\ffdiaporama\trunk\Win32Release\src\ffDiaporama_lib\release"
-        }
+        message("Windows system lib build")
+        LIBS    += -L"D:\code\ffDiaporama\build-ffDiaporama-Desktop_x64-Debug\src\ffDiaporama_lib\debug"
+        LIBS    += -lexiv2
     }
 
-    CONFIG      += sql                                                      #------ I don't know why, but windows version need sql module in config directive
+
+    message(Include $$INCLUDEPATH)
     DEFINES     += USELIBSWRESAMPLE
 
-    INCLUDEPATH += .                                                        #------ I don't know why, but windows need this !
-    INCLUDEPATH += ../exiv2
-    INCLUDEPATH += "../../../win_src/exiv2-0.24/src"
-    INCLUDEPATH += "../../../win_src/msinttypes"
-
-    LIBS        += -lgdi32 -lkernel32 -luser32 -lshell32 -ladvapi32         #------ Windows GDI libs link
+    LIBS        += -lgdi32
+    #LIBS        += -lgdi32 -lkernel32 -luser32 -lshell32 -ladvapi32         #------ Windows GDI libs link
     LIBS        += -lswresample                                             #------ conditionnaly include libswresample
-
-    SOURCES += \
-        ../../../win_src/exiv2-0.24/src/xmpsidecar.cpp \
-        ../../../win_src/exiv2-0.24/src/xmp.cpp \
-        ../../../win_src/exiv2-0.24/src/version.cpp \
-        ../../../win_src/exiv2-0.24/src/value.cpp \
-        ../../../win_src/exiv2-0.24/src/utils.cpp \
-        ../../../win_src/exiv2-0.24/src/types.cpp \
-        ../../../win_src/exiv2-0.24/src/tiffvisitor.cpp \
-        ../../../win_src/exiv2-0.24/src/tiffimage.cpp \
-        ../../../win_src/exiv2-0.24/src/tiffcomposite.cpp \
-        ../../../win_src/exiv2-0.24/src/tgaimage.cpp \
-        ../../../win_src/exiv2-0.24/src/tags.cpp \
-        ../../../win_src/exiv2-0.24/src/sonymn.cpp \
-        ../../../win_src/exiv2-0.24/src/sigmamn.cpp \
-        ../../../win_src/exiv2-0.24/src/samsungmn.cpp \
-        ../../../win_src/exiv2-0.24/src/rw2image.cpp \
-        ../../../win_src/exiv2-0.24/src/rafimage.cpp \
-        ../../../win_src/exiv2-0.24/src/psdimage.cpp \
-        ../../../win_src/exiv2-0.24/src/properties.cpp \
-        ../../../win_src/exiv2-0.24/src/preview.cpp \
-        ../../../win_src/exiv2-0.24/src/pngimage.cpp \
-        ../../../win_src/exiv2-0.24/src/pngchunk.cpp \
-        ../../../win_src/exiv2-0.24/src/pgfimage.cpp \
-        ../../../win_src/exiv2-0.24/src/pentaxmn.cpp \
-        ../../../win_src/exiv2-0.24/src/panasonicmn.cpp \
-        ../../../win_src/exiv2-0.24/src/orfimage.cpp \
-        ../../../win_src/exiv2-0.24/src/olympusmn.cpp \
-        ../../../win_src/exiv2-0.24/src/nikonmn.cpp \
-        ../../../win_src/exiv2-0.24/src/mrwimage.cpp \
-        ../../../win_src/exiv2-0.24/src/minoltamn.cpp \
-        ../../../win_src/exiv2-0.24/src/metadatum.cpp \
-        ../../../win_src/exiv2-0.24/src/makernote.cpp \
-        ../../../win_src/exiv2-0.24/src/localtime.c \
-        ../../../win_src/exiv2-0.24/src/jpgimage.cpp \
-        ../../../win_src/exiv2-0.24/src/jp2image.cpp \
-        ../../../win_src/exiv2-0.24/src/iptc.cpp \
-        ../../../win_src/exiv2-0.24/src/image.cpp \
-        ../../../win_src/exiv2-0.24/src/gifimage.cpp \
-        ../../../win_src/exiv2-0.24/src/getopt_win32.c \
-        ../../../win_src/exiv2-0.24/src/futils.cpp \
-        ../../../win_src/exiv2-0.24/src/fujimn.cpp \
-        ../../../win_src/exiv2-0.24/src/exif.cpp \
-        ../../../win_src/exiv2-0.24/src/error.cpp \
-        ../../../win_src/exiv2-0.24/src/epsimage.cpp \
-        ../../../win_src/exiv2-0.24/src/easyaccess.cpp \
-        ../../../win_src/exiv2-0.24/src/datasets.cpp \
-        ../../../win_src/exiv2-0.24/src/crwimage.cpp \
-        ../../../win_src/exiv2-0.24/src/cr2image.cpp \
-        ../../../win_src/exiv2-0.24/src/convert.cpp \
-        ../../../win_src/exiv2-0.24/src/canonmn.cpp \
-        ../../../win_src/exiv2-0.24/src/bmpimage.cpp \
-        ../../../win_src/exiv2-0.24/src/basicio.cpp \
-        ../../../win_src/exiv2-0.24/src/asfvideo.cpp \
-        ../../../win_src/exiv2-0.24/src/matroskavideo.cpp \
-        ../../../win_src/exiv2-0.24/src/quicktimevideo.cpp \
-        ../../../win_src/exiv2-0.24/src/riffvideo.cpp
-
-    HEADERS += \
-        ../../../win_src/exiv2-0.24/src/xmpsidecar.hpp \
-        ../../../win_src/exiv2-0.24/src/xmp.hpp \
-        ../../../win_src/exiv2-0.24/src/version.hpp \
-        ../../../win_src/exiv2-0.24/src/value.hpp \
-        ../../../win_src/exiv2-0.24/src/utils.hpp \
-        ../../../win_src/exiv2-0.24/src/tzfile.h \
-        ../../../win_src/exiv2-0.24/src/types.hpp \
-        ../../../win_src/exiv2-0.24/src/timegm.h \
-        ../../../win_src/exiv2-0.24/src/tiffvisitor_int.hpp \
-        ../../../win_src/exiv2-0.24/src/tiffimage_int.hpp \
-        ../../../win_src/exiv2-0.24/src/tiffimage.hpp \
-        ../../../win_src/exiv2-0.24/src/tifffwd_int.hpp \
-        ../../../win_src/exiv2-0.24/src/tiffcomposite_int.hpp \
-        ../../../win_src/exiv2-0.24/src/tgaimage.hpp \
-        ../../../win_src/exiv2-0.24/src/tags_int.hpp \
-        ../../../win_src/exiv2-0.24/src/tags.hpp \
-        ../../../win_src/exiv2-0.24/src/sonymn_int.hpp \
-        ../../../win_src/exiv2-0.24/src/sigmamn_int.hpp \
-        ../../../win_src/exiv2-0.24/src/samsungmn_int.hpp \
-        ../../../win_src/exiv2-0.24/src/rw2image_int.hpp \
-        ../../../win_src/exiv2-0.24/src/rw2image.hpp \
-        ../../../win_src/exiv2-0.24/src/rcsid_int.hpp \
-        ../../../win_src/exiv2-0.24/src/rafimage.hpp \
-        ../../../win_src/exiv2-0.24/src/psdimage.hpp \
-        ../../../win_src/exiv2-0.24/src/properties.hpp \
-        ../../../win_src/exiv2-0.24/src/private.h \
-        ../../../win_src/exiv2-0.24/src/preview.hpp \
-        ../../../win_src/exiv2-0.24/src/pngimage.hpp \
-        ../../../win_src/exiv2-0.24/src/pngchunk_int.hpp \
-        ../../../win_src/exiv2-0.24/src/pgfimage.hpp \
-        ../../../win_src/exiv2-0.24/src/pentaxmn_int.hpp \
-        ../../../win_src/exiv2-0.24/src/panasonicmn_int.hpp \
-        ../../../win_src/exiv2-0.24/src/orfimage_int.hpp \
-        ../../../win_src/exiv2-0.24/src/orfimage.hpp \
-        ../../../win_src/exiv2-0.24/src/olympusmn_int.hpp \
-        ../../../win_src/exiv2-0.24/src/nikonmn_int.hpp \
-        ../../../win_src/exiv2-0.24/src/mrwimage.hpp \
-        ../../../win_src/exiv2-0.24/src/minoltamn_int.hpp \
-        ../../../win_src/exiv2-0.24/src/metadatum.hpp \
-        ../../../win_src/exiv2-0.24/src/makernote_int.hpp \
-        ../../../win_src/exiv2-0.24/src/jpgimage.hpp \
-        ../../../win_src/exiv2-0.24/src/jp2image.hpp \
-        ../../../win_src/exiv2-0.24/src/iptc.hpp \
-        ../../../win_src/exiv2-0.24/src/image.hpp \
-        ../../../win_src/exiv2-0.24/src/i18n.h \
-        ../../../win_src/exiv2-0.24/src/gifimage.hpp \
-        ../../../win_src/exiv2-0.24/src/getopt_win32.h \
-        ../../../win_src/exiv2-0.24/src/futils.hpp \
-        ../../../win_src/exiv2-0.24/src/fujimn_int.hpp \
-        ../../../win_src/exiv2-0.24/src/exiv2app.hpp \
-        ../../../win_src/exiv2-0.24/src/exiv2.hpp \
-        ../../../win_src/exiv2-0.24/src/exif.hpp \
-        ../../../win_src/exiv2-0.24/src/error.hpp \
-        ../../../win_src/exiv2-0.24/src/epsimage.hpp \
-        ../../../win_src/exiv2-0.24/src/easyaccess.hpp \
-        ../../../win_src/exiv2-0.24/src/datasets.hpp \
-        ../../../win_src/exiv2-0.24/src/crwimage_int.hpp \
-        ../../../win_src/exiv2-0.24/src/crwimage.hpp \
-        ../../../win_src/exiv2-0.24/src/cr2image_int.hpp \
-        ../../../win_src/exiv2-0.24/src/cr2image.hpp \
-        ../../../win_src/exiv2-0.24/src/convert.hpp \
-        ../../../win_src/exiv2-0.24/src/canonmn_int.hpp \
-        ../../../win_src/exiv2-0.24/src/bmpimage.hpp \
-        ../../../win_src/exiv2-0.24/src/basicio.hpp \
-        ../../../win_src/exiv2-0.24/src/actions.hpp \
-        ../../../win_src/exiv2-0.24/src/asfvideo.hpp \
-        ../../../win_src/exiv2-0.24/src/matroskavideo.hpp \
-        ../../../win_src/exiv2-0.24/src/quicktimevideo.hpp \
-        ../../../win_src/exiv2-0.24/src/riffvideo.hpp \
-            ../exiv2/exv_msvc.h
 
     RC_FILE     += ffDiaporama.rc
     OTHER_FILES += ffdiaporama.ico \    # icon file to be install on windows system

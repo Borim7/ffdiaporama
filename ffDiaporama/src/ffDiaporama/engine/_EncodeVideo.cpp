@@ -20,7 +20,7 @@
 
 #include "_EncodeVideo.h"
 
-#define PIXFMT      PIX_FMT_RGB24
+#define PIXFMT      AV_PIX_FMT_RGB24
 #define QTPIXFMT    QImage::Format_RGB888
 
 //*************************************************************************************************************************************************
@@ -185,12 +185,12 @@ void cEncodeVideo::CloseEncoder() {
 int cEncodeVideo::getThreadFlags(AVCodecID ID) {
     int Ret=0;
     switch (ID) {
-        case CODEC_ID_PRORES:
-        case CODEC_ID_MPEG1VIDEO:
-        case CODEC_ID_DVVIDEO:
-        case CODEC_ID_MPEG2VIDEO:   Ret=FF_THREAD_SLICE;                    break;
-        case CODEC_ID_H264 :        Ret=FF_THREAD_FRAME|FF_THREAD_SLICE;    break;
-        default:                    Ret=FF_THREAD_FRAME;                    break;
+        case AV_CODEC_ID_PRORES:
+        case AV_CODEC_ID_MPEG1VIDEO:
+        case AV_CODEC_ID_DVVIDEO:
+        case AV_CODEC_ID_MPEG2VIDEO:   Ret=FF_THREAD_SLICE;                    break;
+        case AV_CODEC_ID_H264 :        Ret=FF_THREAD_FRAME|FF_THREAD_SLICE;    break;
+        default:                       Ret=FF_THREAD_FRAME;                    break;
     }
     return Ret;
 }
@@ -414,7 +414,7 @@ bool cEncodeVideo::OpenVideoStream(sVideoCodecDef *VideoCodecDef,int VideoCodecS
     // Setup codec parameters
     VideoStream->codec->width               =ImageWidth;
     VideoStream->codec->height              =ImageHeight;
-    VideoStream->codec->pix_fmt             =PIX_FMT_YUV420P;
+    VideoStream->codec->pix_fmt             =AV_PIX_FMT_YUV420P;
     VideoStream->codec->time_base           =VideoFrameRate;
     VideoStream->codec->sample_aspect_ratio =PixelAspectRatio;
     VideoStream->sample_aspect_ratio        =PixelAspectRatio;
@@ -441,7 +441,7 @@ bool cEncodeVideo::OpenVideoStream(sVideoCodecDef *VideoCodecDef,int VideoCodecS
     } else if (codec->id==AV_CODEC_ID_MJPEG) {
 
         //-qscale 2 -qmin 2 -qmax 2
-        VideoStream->codec->pix_fmt             =PIX_FMT_YUVJ420P;
+        VideoStream->codec->pix_fmt             =AV_PIX_FMT_YUVJ420P;
         VideoStream->codec->qmin                =2;
         VideoStream->codec->qmax                =2;
         VideoStream->codec->bit_rate_tolerance  =int(qreal(int64_t(ImageWidth)*int64_t(ImageHeight)*int64_t(VideoFrameRate.den))/qreal(VideoFrameRate.num))*10;
